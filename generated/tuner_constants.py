@@ -66,8 +66,7 @@ class TunerConstants:
         configs.CurrentLimitsConfigs()
         # Swerve azimuth does not require much torque output, so we can set a relatively low
         # stator current limit to help avoid brownouts without impacting performance.
-        .with_stator_current_limit(60.0)
-        .with_stator_current_limit_enable(True)
+        .with_stator_current_limit(60.0).with_stator_current_limit_enable(True)
     )
     _encoder_initial_configs = configs.CANcoderConfiguration()
     # Configs for the Pigeon 2; leave this None to skip applying Pigeon 2 configs
@@ -79,7 +78,7 @@ class TunerConstants:
 
     # Theoretical free speed (m/s) at 12 V applied output;
     # This needs to be tuned to your individual robot
-    speed_at_12_volts: units.meters_per_second = 0.00
+    speed_at_12_volts: units.meters_per_second = 3.00
 
     # Every 1 rotation of the azimuth results in _couple_ratio drive motor turns;
     # This may need to be tuned to your individual robot
@@ -87,7 +86,7 @@ class TunerConstants:
 
     _drive_gear_ratio = 6.746031746031747
     _steer_gear_ratio = 21.428571428571427
-    _wheel_radius: units.meter = inchesToMeters(0)
+    _wheel_radius: units.meter = inchesToMeters(2)
 
     _invert_left_side = False
     _invert_right_side = True
@@ -136,7 +135,6 @@ class TunerConstants:
         .with_drive_friction_voltage(_drive_friction_voltage)
     )
 
-
     # Front Left
     _front_left_drive_motor_id = 5
     _front_left_steer_motor_id = 4
@@ -145,7 +143,7 @@ class TunerConstants:
     _front_left_steer_motor_inverted = True
     _front_left_encoder_inverted = False
 
-    _front_left_x_pos: units.meter = inchesToMeters(9)
+    _front_left_x_pos: units.meter = inchesToMeters(6.35)
     _front_left_y_pos: units.meter = inchesToMeters(9)
 
     # Front Right
@@ -156,7 +154,7 @@ class TunerConstants:
     _front_right_steer_motor_inverted = True
     _front_right_encoder_inverted = False
 
-    _front_right_x_pos: units.meter = inchesToMeters(9)
+    _front_right_x_pos: units.meter = inchesToMeters(6.35)
     _front_right_y_pos: units.meter = inchesToMeters(-9)
 
     # Back Left
@@ -167,7 +165,7 @@ class TunerConstants:
     _back_left_steer_motor_inverted = True
     _back_left_encoder_inverted = False
 
-    _back_left_x_pos: units.meter = inchesToMeters(-9)
+    _back_left_x_pos: units.meter = inchesToMeters(-6.35)
     _back_left_y_pos: units.meter = inchesToMeters(9)
 
     # Back Right
@@ -178,9 +176,8 @@ class TunerConstants:
     _back_right_steer_motor_inverted = True
     _back_right_encoder_inverted = False
 
-    _back_right_x_pos: units.meter = inchesToMeters(-9)
+    _back_right_x_pos: units.meter = inchesToMeters(-6.35)
     _back_right_y_pos: units.meter = inchesToMeters(-9)
-
 
     front_left = _constants_creator.create_module_constants(
         _front_left_steer_motor_id,
@@ -363,4 +360,4 @@ class TunerSwerveDrivetrain(
             arg1,
             arg2,
             arg3,
-        )
+        )

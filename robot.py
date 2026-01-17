@@ -25,7 +25,10 @@ class Jackie(magicbot.MagicRobot):
         pass
 
     def teleopPeriodic(self) -> None:
-        pass
+        vx = -self.gamepad.getLeftY() * self.drivetrain.max_speed
+        vy = -self.gamepad.getLeftX() * self.drivetrain.max_speed
+        vz = -self.gamepad.getRightX() * self.drivetrain.max_angular_rate
+        self.drivetrain.drive_field(vx, vy, vz)
 
     def testInit(self) -> None:
         pass
