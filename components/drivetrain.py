@@ -1,29 +1,24 @@
+import wpilib
+from magicbot import tunable
+from phoenix6.hardware.pigeon2 import Pigeon2
 from phoenix6.swerve import requests
-from phoenix6.swerve.swerve_module import SwerveModule
 from phoenix6.swerve.swerve_drivetrain import (
     DriveMotorT,
-    SteerMotorT,
     EncoderT,
+    SteerMotorT,
     SwerveDrivetrain,
 )
-from phoenix6.hardware.pigeon2 import Pigeon2
-
-from wpimath.units import rotationsToRadians
+from phoenix6.swerve.swerve_module import SwerveModule
 from wpimath.geometry import Rotation2d
-
 from wpimath.kinematics import (
     SwerveDrive2Kinematics,
     SwerveDrive3Kinematics,
     SwerveDrive4Kinematics,
     SwerveDrive6Kinematics,
 )
+from wpimath.units import rotationsToRadians
 
-import wpilib
-
-from magicbot import tunable
-
-from generated.tuner_constants import TunerSwerveDrivetrain, TunerConstants
-
+from generated.tuner_constants import TunerConstants, TunerSwerveDrivetrain
 from utilities import game
 
 

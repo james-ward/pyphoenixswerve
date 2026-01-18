@@ -1,12 +1,10 @@
-from robot import MyRobot
-
-from pyfrc.physics.core import PhysicsInterface
 from phoenix6.swerve.sim_swerve_drivetrain import SimSwerveDrivetrain
-
-from generated.tuner_constants import TunerConstants
+from pyfrc.physics.core import PhysicsInterface
+from wpilib.simulation import RoboRioSim
 from wpimath.geometry import Translation2d
 
-from wpilib.simulation import RoboRioSim
+from generated.tuner_constants import TunerConstants
+from robot import MyRobot
 
 
 class PhysicsEngine:

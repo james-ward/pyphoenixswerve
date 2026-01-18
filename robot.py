@@ -35,6 +35,3 @@ class MyRobot(magicbot.MagicRobot):
 
     def testPeriodic(self) -> None:
         pass
-
-    def disabledPeriodic(self) -> None:
-        pass
