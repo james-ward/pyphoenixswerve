@@ -58,6 +58,11 @@ class Drivetrain:
         self.max_speed = TunerConstants.speed_at_12_volts
         # speed_at_12_volts desired top speed
 
+    def on_enable(self) -> None:
+        self._phoenix_swerve.set_operator_perspective_forward(
+            Rotation2d.fromDegrees(0) if game.is_blue() else Rotation2d.fromDegrees(180)
+        )
+
     @property
     def modules(self) -> list[SwerveModule[DriveMotorT, SteerMotorT, EncoderT]]:
         return self._phoenix_swerve.modules
@@ -106,8 +111,4 @@ class Drivetrain:
         self._request = request
 
     def execute(self) -> None:
-        # Always set the operator perspective here in case we disconnect mid match
-        self._phoenix_swerve.set_operator_perspective_forward(
-            Rotation2d.fromDegrees(0) if game.is_blue() else Rotation2d.fromDegrees(180)
-        )
         self._phoenix_swerve.set_control(self._request)
