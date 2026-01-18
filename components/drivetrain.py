@@ -18,6 +18,8 @@ from wpimath.kinematics import (
     SwerveDrive6Kinematics,
 )
 
+import wpilib
+
 from magicbot import tunable
 
 from generated.tuner_constants import TunerSwerveDrivetrain, TunerConstants
@@ -26,6 +28,8 @@ from utilities import game
 
 
 class Drivetrain:
+    field: wpilib.Field2d
+
     max_speed = tunable(0.0)
     max_angular_rate = tunable(rotationsToRadians(0.75))
 
@@ -57,6 +61,7 @@ class Drivetrain:
     def setup(self) -> None:
         self.max_speed = TunerConstants.speed_at_12_volts
         # speed_at_12_volts desired top speed
+        self.field_obj = self.field.getObject("odometry")
 
     def on_enable(self) -> None:
         self._phoenix_swerve.set_operator_perspective_forward(
@@ -112,3 +117,4 @@ class Drivetrain:
 
     def execute(self) -> None:
         self._phoenix_swerve.set_control(self._request)
+        self.field_obj.setPose(self._phoenix_swerve.get_state().pose)
