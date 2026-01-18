@@ -1,4 +1,4 @@
-from robot import Jackie
+from robot import MyRobot
 
 from pyfrc.physics.core import PhysicsInterface
 from phoenix6.swerve.sim_swerve_drivetrain import SimSwerveDrivetrain
@@ -10,7 +10,7 @@ from wpilib.simulation import RoboRioSim
 
 
 class PhysicsEngine:
-    def __init__(self, physics_controller: PhysicsInterface, robot: Jackie) -> None:
+    def __init__(self, physics_controller: PhysicsInterface, robot: MyRobot) -> None:
         self.robot = robot
         self.physics_controller = physics_controller
 

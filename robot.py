@@ -4,7 +4,7 @@ import wpilib
 from components.drivetrain import Drivetrain
 
 
-class Jackie(magicbot.MagicRobot):
+class MyRobot(magicbot.MagicRobot):
     # Components
     drivetrain: Drivetrain
 
